@@ -1,0 +1,30 @@
+<mat-card *ngIf="screening && customers">
+  <h2>{{screening.movie.name}}</h2>
+  <h3>Preis</h3>
+  <p>{{screening.movie.price}} CHF</p>
+  <h3>Zeit</h3>
+  <p>{{screening.time | date:'dd. LLLL yyyy HH:mm' }} Uhr</p>
+
+  <h3>{{screening.hall.id}}</h3>
+  <table>
+    <tr *ngFor="let row of screening.hall.rows">
+      <td *ngFor="let place of row.places" [class]="getColor(place.isReserved) + ' small-text ' + customClases[row.id][place.number]">
+        <button mat-button (click)="reserve(place, row)">
+          <p>{{row.id}}, {{place.number}}</p>
+        </button>
+      </td>
+    </tr>
+  </table>
+  <button [disabled]="isDisabled()" mat-button (click)="apply()">Reservieren</button>
+  <mat-form-field appearance="fill" class="center-container">
+    <mat-label>Kunde</mat-label>
+    <mat-select [(ngModel)]="customer" [(value)]="customer">
+      <mat-option *ngFor="let customer of customers" [value]="customer">
+        {{customer.firstName + ' ' +customer.lastName}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</mat-card>
+<mat-card *ngIf="!screening || !customers">
+  <mat-spinner></mat-spinner>
+</mat-card>

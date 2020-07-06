@@ -1,0 +1,27 @@
+table, th, td {
+  border: 1px solid black;
+  text-align: center;
+}
+
+table {
+  width: 100%;
+}
+.small-text {
+  font-size: 12px;
+}
+
+.place-used {
+  background-color: #ff362a;
+}
+
+.place-free {
+  background-color: #4bbd28;
+  font-size: 12px;
+}
+
+.not-selected {
+}
+
+.selected {
+  background-color: antiquewhite;
+}

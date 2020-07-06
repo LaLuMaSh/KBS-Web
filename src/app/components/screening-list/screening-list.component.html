@@ -1,0 +1,12 @@
+<div class="title-container">
+  <h2 >Vorstellungen am {{date | date}}</h2>
+  <mat-divider></mat-divider>
+  <div *ngIf="screenings">
+    <mat-card *ngFor="let screening of screenings">
+      <app-screening-card [screening]="screening"></app-screening-card>
+    </mat-card>
+  </div>
+  <div *ngIf="!screenings" class="center-container">
+    <mat-spinner></mat-spinner>
+  </div>
+</div>

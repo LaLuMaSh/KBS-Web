@@ -1,0 +1,28 @@
+<mat-card *ngIf="movies">
+  <div class="center-container">
+    <mat-form-field appearance="fill" class="center-container">
+      <mat-label>Wählen Sie ein Datum aus</mat-label>
+      <input matInput [matDatepicker]="picker" [(ngModel)]="date">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="center-container">
+      <mat-label>Film</mat-label>
+      <mat-select [(ngModel)]="title" [(value)]="title">
+        <mat-option value="Kein Film">Kein Film</mat-option>
+        <mat-option *ngFor="let movie of movies" [value]="movie.name">
+          {{movie.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="center-container">
+    <button mat-button>Anwenden</button>
+  </div>
+</mat-card>
+<mat-card *ngIf="!movies">
+  <mat-spinner></mat-spinner>
+</mat-card>
+
+<app-screening-list [date]="this.date" [title]="title"></app-screening-list>
