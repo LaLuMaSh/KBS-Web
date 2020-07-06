@@ -24,6 +24,7 @@ import { ScreeningDetailComponent } from './components/screening-detail/screenin
 import { CustomerOverviewComponent } from './components/customer-overview/customer-overview.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { MovieFormComponent } from './components/movie-form/movie-form.component';
+import { ScreeningManagementComponent } from './components/screening-management/screening-management.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { MovieFormComponent } from './components/movie-form/movie-form.component
     ScreeningDetailComponent,
     CustomerOverviewComponent,
     AdminComponent,
-    MovieFormComponent
+    MovieFormComponent,
+    ScreeningManagementComponent
   ],
   imports: [
     BrowserModule,

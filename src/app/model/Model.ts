@@ -55,4 +55,10 @@ export class ReservationDto {
   public customerUuid: string;
   public screeningUuid: string;
 }
+export class CreateScreeningDto {
+  public title: string;
+  public amount: number;
+  public start: Date;
+  public times: string[];
+}
 

@@ -1,0 +1,43 @@
+<mat-card>
+  <h3>Vorstellungen erstellen</h3>
+
+  <mat-form-field appearance="fill" class="center-container">
+    <mat-label>Film</mat-label>
+    <mat-select [(ngModel)]="title" [(value)]="title">
+      <mat-option *ngFor="let movie of movies" [value]="movie.name">
+        {{movie.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br>
+  <br>
+  <mat-form-field>
+    <mat-label>Anzahl Wochen</mat-label>
+    <input matInput type="number" [(ngModel)]="amount">
+  </mat-form-field>
+  <br>
+  <br>
+  <mat-form-field appearance="fill" class="center-container">
+    <mat-label>Startdatum</mat-label>
+    <input matInput [matDatepicker]="picker" [(ngModel)]="start">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <br>
+  <br>
+  <mat-form-field appearance="fill" class="center-container">
+    <mat-label>Zeit</mat-label>
+    <mat-select [(ngModel)]="zeiten" [(value)]="zeiten" multiple>
+      <mat-option *ngFor="let time of times" [value]="time">
+        {{time}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br>
+  <br>
+
+  <button (click)="save()" [disabled]="isDisabled()" mat-button>Speichern</button>
+</mat-card>
+<mat-card *ngIf="!movies">
+
+</mat-card>
