@@ -22,6 +22,8 @@ import { DatePipe } from '@angular/common';
 import { ScreeningCardComponent } from './components/screening-card/screening-card.component';
 import { ScreeningDetailComponent } from './components/screening-detail/screening-detail.component';
 import { CustomerOverviewComponent } from './components/customer-overview/customer-overview.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { MovieFormComponent } from './components/movie-form/movie-form.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { CustomerOverviewComponent } from './components/customer-overview/custom
     ScreeningListComponent,
     ScreeningCardComponent,
     ScreeningDetailComponent,
-    CustomerOverviewComponent
+    CustomerOverviewComponent,
+    AdminComponent,
+    MovieFormComponent
   ],
   imports: [
     BrowserModule,

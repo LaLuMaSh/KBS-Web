@@ -33,6 +33,12 @@ export class MovieDto {
   public name: string;
   public price: number;
 }
+export class ComplexMovie {
+  public title: string;
+  public price: number;
+  public from: Date;
+  public to: Date;
+}
 export class CustomerDto {
   public uuid: string;
   public firstName: string;

@@ -1,0 +1,32 @@
+<mat-card>
+  <h3>Film hinzufügen</h3>
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <input matInput type="text" [(ngModel)]="title">
+  </mat-form-field>
+  <br>
+  <br>
+  <mat-form-field>
+    <mat-label>Preis</mat-label>
+    <input matInput type="number" [(ngModel)]="price">
+  </mat-form-field>
+  <br>
+  <br>
+  <mat-form-field appearance="fill" class="center-container">
+    <mat-label>Von</mat-label>
+    <input matInput [matDatepicker]="pickerFrom" [(ngModel)]="from">
+    <mat-datepicker-toggle matSuffix [for]="pickerFrom"></mat-datepicker-toggle>
+    <mat-datepicker #pickerFrom></mat-datepicker>
+  </mat-form-field>
+  <br>
+  <br>
+  <mat-form-field appearance="fill" class="center-container">
+    <mat-label>Bis</mat-label>
+    <input matInput [matDatepicker]="pickerTo" [(ngModel)]="to">
+    <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>
+    <mat-datepicker #pickerTo></mat-datepicker>
+  </mat-form-field>
+  <br>
+  <br>
+  <button (click)="save()" [disabled]="isDisabled()" mat-button>Speichern</button>
+</mat-card>
