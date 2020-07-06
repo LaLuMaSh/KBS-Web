@@ -1,4 +1,4 @@
-export class Model {
+export class Screening {
   public uuid: string;
   public hall: string;
   public movieName: string;
@@ -10,12 +10,12 @@ export class HallDto {
   public rows: RowDto[];
 }
 export class RowDto {
-  public id: string;
+  public id: number;
   public places: PlaceDto[];
 }
 export class PlaceDto {
   public number: number;
-  public isReserved: boolean;
+  public reserved: boolean;
 }
 export class ScreeningDto {
   public uuid: string;
@@ -34,8 +34,19 @@ export class MovieDto {
   public price: number;
 }
 export class CustomerDto {
+  public uuid: string;
   public firstName: string;
   public lastName: string;
   public phoneNumber: string;
+}
+
+export class LocationDto {
+  public row: number;
+  public place: number;
+}
+export class ReservationDto {
+  public places: LocationDto[];
+  public customerUuid: string;
+  public screeningUuid: string;
 }
 

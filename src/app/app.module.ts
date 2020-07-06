@@ -21,6 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
 import { ScreeningCardComponent } from './components/screening-card/screening-card.component';
 import { ScreeningDetailComponent } from './components/screening-detail/screening-detail.component';
+import { CustomerOverviewComponent } from './components/customer-overview/customer-overview.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ScreeningDetailComponent } from './components/screening-detail/screenin
     HomeComponent,
     ScreeningListComponent,
     ScreeningCardComponent,
-    ScreeningDetailComponent
+    ScreeningDetailComponent,
+    CustomerOverviewComponent
   ],
   imports: [
     BrowserModule,

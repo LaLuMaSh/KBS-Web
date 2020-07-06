@@ -8,7 +8,8 @@
   <h3>{{screening.hall.id}}</h3>
   <table>
     <tr *ngFor="let row of screening.hall.rows">
-      <td *ngFor="let place of row.places" [class]="getColor(place.isReserved) + ' small-text ' + customClases[row.id][place.number]">
+      <td *ngFor="let place of row.places"
+          [class]="getColor(place.reserved) + ' small-text ' + customClases[row.id][place.number]">
         <button mat-button (click)="reserve(place, row)">
           <p>{{row.id}}, {{place.number}}</p>
         </button>
@@ -20,7 +21,7 @@
     <mat-label>Kunde</mat-label>
     <mat-select [(ngModel)]="customer" [(value)]="customer">
       <mat-option *ngFor="let customer of customers" [value]="customer">
-        {{customer.firstName + ' ' +customer.lastName}}
+        {{customer.firstName + ' ' + customer.lastName}}
       </mat-option>
     </mat-select>
   </mat-form-field>

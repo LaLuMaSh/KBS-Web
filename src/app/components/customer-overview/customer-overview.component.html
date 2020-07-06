@@ -1,0 +1,26 @@
+<mat-card *ngIf="customers" class="center-container">
+  <mat-form-field appearance="fill">
+    <mat-label>Kunde</mat-label>
+    <mat-select [(ngModel)]="customer" [(value)]="customer">
+      <mat-option *ngFor="let customer of customers" [value]="customer">
+        {{customer.firstName + ' ' + customer.lastName}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</mat-card>
+<div *ngIf="screenings && customers">
+  <mat-card>
+    <h2>{{customer.firstName}} {{customer.lastName}}</h2>
+    <h3>Telefonnummer:</h3>
+    <p>{{customer.phoneNumber}}</p>
+  </mat-card>
+  <mat-card *ngFor="let screening of screenings">
+    <app-screening-card [screening]="screening"></app-screening-card>
+  </mat-card>
+</div>
+<mat-card *ngIf="customers && !screenings">
+  <p>Bitte wählen sie einen Kunden aus...</p>
+</mat-card>
+<mat-card *ngIf="!customers">
+  <mat-divider></mat-divider>
+</mat-card>

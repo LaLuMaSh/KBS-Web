@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Model } from '../../model/Model';
+import { Screening } from '../../model/Model';
 
 @Component({
   selector: 'app-screening-card',
@@ -7,7 +7,7 @@ import { Model } from '../../model/Model';
   styleUrls: ['./screening-card.component.css']
 })
 export class ScreeningCardComponent implements OnInit {
-  @Input() public screening: Model;
+  @Input() public screening: Screening;
 
   constructor() {
   }

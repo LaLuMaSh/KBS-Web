@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ScreeningService } from '../../services/screening.service';
-import { Model } from '../../model/Model';
+import { Screening } from '../../model/Model';
 
 @Component({
   selector: 'app-screening-list',
@@ -10,7 +10,7 @@ import { Model } from '../../model/Model';
 export class ScreeningListComponent implements OnInit {
   private dateValue: Date;
   private titleValue: string;
-  public screenings: Model[];
+  public screenings: Screening[];
 
   @Input()
   set date(date: Date) {

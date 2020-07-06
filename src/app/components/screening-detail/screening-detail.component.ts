@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { ComplexScreeningDto, CustomerDto, PlaceDto, RowDto } from '../../model/Model';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ComplexScreeningDto, CustomerDto, LocationDto, PlaceDto, ReservationDto, RowDto } from '../../model/Model';
 import { ScreeningService } from '../../services/screening.service';
 import { CustomerService } from '../../services/customer.service';
 
@@ -12,12 +12,13 @@ import { CustomerService } from '../../services/customer.service';
 export class ScreeningDetailComponent implements OnInit {
   public screening: ComplexScreeningDto;
   customClases = [] as string[][];
-  reservedPlaces = [] as SimplePlace[];
+  reservedPlaces = [] as LocationDto[];
   customer: CustomerDto;
   customers: CustomerDto[];
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private screeningService: ScreeningService,
     private customerService: CustomerService
   ) {
@@ -49,7 +50,7 @@ export class ScreeningDetailComponent implements OnInit {
   }
 
   reserve(place: PlaceDto, row: RowDto) {
-    if (place.isReserved) {
+    if (place.reserved) {
       return;
     }
     if (this.customClases[row.id][place.number] === 'selected') {
@@ -69,7 +70,7 @@ export class ScreeningDetailComponent implements OnInit {
       }
     } else {
       this.customClases[row.id][place.number] = 'selected';
-      const simplePlace = new SimplePlace();
+      const simplePlace = new LocationDto();
       simplePlace.place = place.number;
       simplePlace.row = row.id;
       this.reservedPlaces.push(simplePlace);
@@ -77,14 +78,25 @@ export class ScreeningDetailComponent implements OnInit {
   }
 
   apply() {
-    for (const reservedPlace of this.reservedPlaces) {
-      if (reservedPlace) {
-        console.log(reservedPlace.row + ' ' + reservedPlace.place);
+    const reservation = new ReservationDto();
+    reservation.customerUuid = this.customer.uuid;
+    reservation.screeningUuid = this.screening.uuid;
+    reservation.places = this.reservedPlaces;
+    this.screeningService.reservatePlace(reservation).subscribe(value => {
+      if ( value == null || value === '') {
+        this.router.navigateByUrl('/home');
+        console.log(value);
+      } else {
+        console.log(value);
       }
-    }
+    });
   }
 
   isDisabled(): boolean {
+    if (!this.customer) {
+      return true;
+    }
+
     for (const place of this.reservedPlaces) {
       if (place) {
         return false;
@@ -94,7 +106,3 @@ export class ScreeningDetailComponent implements OnInit {
   }
 }
 
-class SimplePlace {
-  row: string;
-  place: number;
-}
