@@ -62,3 +62,7 @@ export class CreateScreeningDto {
   public times: string[];
 }
 
+export class MessageReturnDto {
+  public msg: string;
+}
+
